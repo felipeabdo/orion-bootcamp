@@ -1,0 +1,64 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:url("../img/background.jpg");
+  background-size: cover;
+}
+
+main {
+  display: flex;
+  width: 700px;
+  height: 500px;
+  background-color: rgb(66, 23, 130);
+  margin-top: 150px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  opacity: 95%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+label {
+  font-size: 30px;
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  margin-top: 50px;
+}
+
+input {
+  height: 30px;
+  width: 250px;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+button {
+  width: 140px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+img {
+  width: 200px;
+  margin-right: 50px;
+}
+
+p {
+  font-size: 25px;
+  color: aliceblue ;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  width: 300px;
+  text-align: center;
+}
