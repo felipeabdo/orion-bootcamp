@@ -256,4 +256,4 @@ if (clearButton) {
     }
   });
 }
-Esses códigos adicionam um botão "Limpar" que, quando clicado, redefine todos os campos de entrada e limpa os resultados da busca. Certifique-se de que o botão "Limpar" tenha o ID correspondente definido no seu arquivo HTML.
+
