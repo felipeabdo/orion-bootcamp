@@ -1,0 +1,87 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:url("../img/background.jpg");
+  background-size: cover;
+}
+
+main {
+  display: flex;
+  width: 700px;
+  min-height: 500px;
+  background-color: rgb(66, 23, 130);
+  margin: 150px 0;
+
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  opacity: 95%;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+}
+
+#forms {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 250px;
+  z-index: 1;
+}
+
+#resposta {
+  margin-top: 335px;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+label {
+  font-size: 30px;
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  margin-top: 10px;
+}
+
+input {
+  height: 30px;
+  width: 250px;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+button {
+  width: 140px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+img {
+  width: 200px;
+  margin-right: 50px;
+}
+
+p {
+  margin: 50px auto;
+  font-size: 25px;
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  width: 540px;
+  text-align: center;
+  word-break: break-all;
+}
