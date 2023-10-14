@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 1</title>
+  <link rel="shortcut icon" type="image/jpg" href="img/favicon.png"/>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="dist/index.js" defer></script>
+</head>
+
+<body>
+
+  <main>
+
+
+
+    <div id="container">
+
+
+        <img src="/img/selo-bootcamp.svg" alt="">
+
+        <h1>Dada a lista:</h1>
+        <h2 id="warning">(As funções que alteram lista serão refletidas nessa mesma lista abaixo)</h2>
+
+        <div id="persons-table">
+
+        </div>
+
+        <div id="change-form">
+          <h2>Altere o Nome e/ou a Biografia</h2>
+          <form id="person-change-form">
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id" min="1">
+            <label for="newName">Novo Nome:</label>
+            <input type="text" id="newName" name="newName">
+            <label for="newBio">Nova Biografia:</label>
+            <input type="text" id="newBio" name="newBio">
+            <button type="submit">Alterar</button>
+          </form>
+        </div>
+
+        <div id="delete-form">
+          <h2>Delete uma Pessoa</h2>
+          <form id="person-delete-form">
+            <label for="deleteId">ID a Deletar:</label>
+            <input type="number" id="deleteId" name="deleteId" min="1">
+            <button type="submit">Deletar</button>
+          </form>
+        </div>
+
+        <div id="bio-form">
+          <h2>Buscar Biografia por ID</h2>
+          <form id="person-bio-form">
+            <label for="searchId">ID a Buscar:</label>
+            <input type="number" id="searchId" name="searchId" min="1">
+            <button type="submit">Buscar</button>
+          </form>
+          <div id="bio-result">
+            <h3>Resultado:</h3>
+            <p id="bio-text"></p>
+          </div>
+        </div>
+
+        <div id="name-form">
+          <h2>Buscar Nome por ID</h2>
+          <form id="person-name-form">
+            <label for="searchNameId">ID a Buscar:</label>
+            <input type="number" id="searchNameId" name="searchNameId" min="1">
+            <button type="submit">Buscar</button>
+          </form>
+          <div id="name-result">
+            <h3>Resultado:</h3>
+            <p id="name-text"></p>
+          </div>
+        </div>
+
+        <div id="clear-button">
+          <button id="clear">Limpar</button>
+        </div>
+
+    </div>
+
+  </main>
+
+</body>
+
+</html>
