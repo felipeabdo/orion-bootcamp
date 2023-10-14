@@ -1,9 +1,15 @@
+/**
+ * Define a interface `Person` com propriedades para representar uma pessoa.
+ */
 interface Person {
   id: number;
   name: string;
   bio: string;
 }
 
+/**
+ * Lista de pessoas.
+ */
 let lista: Person[] = [
   {"id" : 1, "name": "Ada Lovelace", "bio" : "Ada Lovelace, foi uma matemática e escritora inglesa reconhecida por ter escrito o primeiro algoritmo para ser processado por uma máquina"},
   {"id" : 2, "name": "Alan Turing", "bio" : "Alan Turing foi um matemático, cientista da computação, lógico, criptoanalista, filósofo e biólogo teórico britânico, ele é amplamente considerado o pai da ciência da computação teórica e da inteligência artificial"},
@@ -11,47 +17,72 @@ let lista: Person[] = [
   {"id" : 4, "name": "Nicolau Copérnico", "bio": "Nicolau Copérnico foi um astrônomo e matemático polonês que desenvolveu a teoria heliocêntrica do Sistema Solar"}
 ];
 
-// FUNÇÕES NO PARADIGMA FUNCIONAL
+/**
+ * FUNCÕES NO PARADIGMA FUNCIONAL
+ * */
 
-// Crie uma função que retorne a bio do id passado
-function getBioByIdFuncional(id: number): string | null {
-  const person = lista.find(item => item.id === id);
+/**
+ * Obtém a biografia de uma pessoa com base no ID.
+ * @param id - O ID da pessoa.
+ * @param persons - A lista de pessoas.
+ * @returns A biografia da pessoa ou `null` se não encontrada.
+ */
+function getBioByIdFuncional(id: number, persons: Person[]): string | null {
+  const person = persons.find(item => item.id === id);
   return person ? person.bio : null;
 }
 
-// Crie uma função que retorne a name do id passado
-function getNameByIdFuncional(id: number): string | null {
-  const person = lista.find(item => item.id === id);
+/**
+ * Obtém o nome de uma pessoa com base no ID.
+ * @param id - O ID da pessoa.
+ * @param persons - A lista de pessoas.
+ * @returns O nome da pessoa ou `null` se não encontrada.
+ */
+function getNameByIdFuncional(id: number, persons: Person[]): string | null {
+  const person = persons.find(item => item.id === id);
   return person ? person.name : null;
 }
 
-// Crie uma função que apague um item da lista a partir de um id passado
-function deleteItemByIdFuncional(id: number): void {
-  lista = lista.filter(item => item.id !== id);
+/**
+ * Remove uma pessoa da lista com base no ID.
+ * @param id - O ID da pessoa a ser removida.
+ * @param persons - A lista de pessoas.
+ * @returns A lista de pessoas atualizada.
+ */
+function deleteItemByIdFuncional(id: number, persons: Person[]): Person[] {
+  return persons.filter(item => item.id !== id);
 }
 
-// Crie uma função que altere a bio ou o name a partir de um id passado
-function updateNameAndBioByIdFuncional(id: number, newName: string | null, newBio: string | null): void {
-  lista = lista.map(item => {
+/**
+ * Atualiza o nome e/ou a biografia de uma pessoa com base no ID.
+ * @param id - O ID da pessoa a ser atualizada.
+ * @param newName - O novo nome (pode ser `null` para manter o mesmo nome).
+ * @param newBio - A nova biografia (pode ser `null` para manter a mesma biografia).
+ * @param persons - A lista de pessoas.
+ * @returns A lista de pessoas atualizada.
+ */
+function updateNameAndBioByIdFuncional(id: number, newName: string | null, newBio: string | null, persons: Person[]): Person[] {
+  return persons.map(item => {
     if (item.id === id) {
-      if (newName !== null) {
-        item.name = newName;
+      if (newName) {
+        item.name = newName ?? item.name;
       }
-      if (newBio !== null) {
-        item.bio = newBio;
+      if (newBio) {
+        item.bio = newBio ?? item.bio;
       }
     }
     return item;
   });
 }
 
-// Demonstrações
-
+/**
+ * Demonstrações das funções no paradigma funcional
+ * */
 console.log(lista);
 
 const id = 2;
 
-let biografia = getBioByIdFuncional(id);
+let biografia = getBioByIdFuncional(id, lista);
 
 if (biografia !== null) {
   console.log(`Biografia: ${biografia}`);
@@ -59,9 +90,7 @@ if (biografia !== null) {
   console.log("ID não encontrado.");
 }
 
-// ---------------------------------------
-
-const nomeFunc = getNameByIdFuncional(id);
+const nomeFunc = getNameByIdFuncional(id, lista);
 
 if (nomeFunc !== null) {
   console.log(`Nome: ${nomeFunc}`);
@@ -69,88 +98,108 @@ if (nomeFunc !== null) {
   console.log("ID não encontrado.");
 }
 
-// ---------------------------------------
-
 const idToDelete = 1;
-deleteItemByIdFuncional(idToDelete);
+
+lista = deleteItemByIdFuncional(idToDelete, lista);
 
 console.log(lista);
-
-// ---------------------------------------
 
 const idToUpdate = 2;
+
 const newName = "Gugu Liberato";
+
 const newBio = "Antônio Augusto Moraes Liberato, mais conhecido como Gugu Liberato ou Gugu, foi um apresentador, radialista, jornalista, empresário, ator, cantor e produtor brasileiro. Filho de imigrantes portugueses, na adolescência Gugu escrevia cartas para Silvio Santos sugerindo programas, que terminou por contratá-lo.";
-updateNameAndBioByIdFuncional(idToUpdate, newName, newBio);
+
+lista = updateNameAndBioByIdFuncional(idToUpdate, newName, newBio, lista);
 
 console.log(lista);
 
+/**
+ * FUNCÕES NO PARADIGMA IMPERATIVO
+ * */
 
-// FUNÇÕES NO PARADIGMA IMPERATIVO
-
-// Crie uma função que retorne a bio do id passado
-function getBioByIdImperativo(id: number): string | null {
-  for (let i = 0; i < lista.length; i++) {
-    if (lista[i].id === id) {
-      return lista[i].bio;
+/**
+ * Obtém a biografia de uma pessoa com base no ID (abordagem imperativa).
+ * @param id - O ID da pessoa.
+ * @param persons - A lista de pessoas.
+ * @returns A biografia da pessoa ou `null` se não encontrada.
+ */
+function getBioByIdImperativo(id: number, persons: Person[]): string | null {
+  for (let i = 0; i < persons.length; i++) {
+    if (persons[i].id === id) {
+      return persons[i].bio;
     }
   }
   return null;
 }
 
-// Crie uma função que retorne a name do id passado
-function getNameByIdImperativo(id: number): string | null {
-  for (let i = 0; i < lista.length; i++) {
-    if (lista[i].id === id) {
-      return lista[i].name;
+/**
+ * Obtém o nome de uma pessoa com base no ID (abordagem imperativa).
+ * @param id - O ID da pessoa.
+ * @param persons - A lista de pessoas.
+ * @returns O nome da pessoa ou `null` se não encontrada.
+ */
+function getNameByIdImperativo(id: number, persons: Person[]): string | null {
+  for (let i = 0; i < persons.length; i++) {
+    if (persons[i].id === id) {
+      return persons[i].name;
     }
   }
   return null;
 }
 
-// Crie uma função que apague um item da lista a partir de um id passado
-function deleteItemByIdImperativo(id: number): void {
-  for (let i = 0; i < lista.length; i++) {
-    if (lista[i].id === id) {
-      lista.splice(i, 1);
+/**
+ * Remove uma pessoa da lista com base no ID (abordagem imperativa).
+ * @param id - O ID da pessoa a ser removida.
+ * @param persons - A lista de pessoas.
+ * @returns A lista de pessoas atualizada.
+ */
+function deleteItemByIdImperativo(id: number, persons: Person[]): Person[] {
+  for (let i = 0; i < persons.length; i++) {
+    if (persons[i].id === id) {
+      persons.splice(i, 1);
       break;
     }
   }
+  return persons;
 }
 
-// Crie uma função que altere a bio ou o name a partir de um id passado
-function updateNameAndBioByIdImperativo(id: number, newName: string | null, newBio: string | null): void {
-  for (let i = 0; i < lista.length; i++) {
-    if (lista[i].id === id) {
+/**
+ * Atualiza o nome e/ou a biografia de uma pessoa com base no ID (abordagem imperativa).
+ * @param id - O ID da pessoa a ser atualizada.
+ * @param newName - O novo nome (pode ser `null` para manter o mesmo nome).
+ * @param newBio - A nova biografia (pode ser `null` para manter a mesma biografia).
+ * @param persons - A lista de pessoas.
+ * @returns A lista de pessoas atualizada.
+ */
+function updateNameAndBioByIdImperativo(id: number, newName: string | null, newBio: string | null, persons: Person[]): Person[] {
+  for (let i = 0; i < persons.length; i++) {
+    if (persons[i].id === id) {
       if (newName !== null) {
-        lista[i].name = newName;
+        persons[i].name = newName;
       }
       if (newBio !== null) {
-        lista[i].bio = newBio;
+        persons[i].bio = newBio;
       }
       break;
     }
   }
+  return persons;
 }
 
-// Demonstrações
-
+/**
+ * Demonstrações das funções no paradigma imperativo
+ * */
 console.log(lista);
 
-const bio = getBioByIdImperativo(3);
+const bio = getBioByIdImperativo(3, lista);
 console.log(`Biografia: ${bio}`);
 
-// ---------------------------------------
-
-const nomeImp = getNameByIdImperativo(4);
+const nomeImp = getNameByIdImperativo(4, lista);
 console.log(nomeImp);
 
-// ---------------------------------------
-
-deleteItemByIdImperativo(3);
+deleteItemByIdImperativo(3, lista);
 console.log(lista);
 
-// ---------------------------------------
-
-updateNameAndBioByIdImperativo(4, "Faustão", "Fausto Corrêa da Silva, popularmente conhecido como Faustão, é um apresentador, comediante e radialista brasileiro. O lokô bitcho!");
+updateNameAndBioByIdImperativo(4, "Faustão", "Fausto Corrêa da Silva, popularmente conhecido como Faustão, é um apresentador, comediante e radialista brasileiro. O lokô bitcho!", lista);
 console.log(lista);
